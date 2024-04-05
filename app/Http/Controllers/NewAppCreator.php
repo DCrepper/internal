@@ -31,6 +31,12 @@ class NewAppCreator extends Controller
         }
         dump($output);
         return view('siteEvent.create-new-app');
+        #git clone run from terminal to clone the new app
+        
+        #git clone
+        #cd newapp
+        #composer install
+        #npm install
     }
 
     /**
