@@ -4,7 +4,7 @@ github_repo_url="https://github.com/DCrepper/outer.git"
 
 # Create a new directory for the cloned repository
 
-outer_root_folder="../../$1"
+outer_root_folder="../$1"
 mkdir -p $outer_root_folder
 
 # Clone the GitHub repository
