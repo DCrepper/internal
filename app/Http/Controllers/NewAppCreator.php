@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Symfony\Component\Process\Process;
 
 class NewAppCreator extends Controller
 {
@@ -20,8 +21,11 @@ class NewAppCreator extends Controller
          $script = base_path("create_laravel_app.sh $appName");
         //$script = "/path/to/your/create_laravel_app.sh $newAppRoot $appName"; // Change this to the path of your shell script
 
-        // Execute the shell script
-        $output = shell_exec($script);
+        $process = new Process([$script]);
+        $process->run();
+
+        $output = $process->getOutput();
+        //$output = shell_exec($script);
 
         // Check if the new app creation was successful
         if ($output === null) {
@@ -32,7 +36,7 @@ class NewAppCreator extends Controller
         dump($output);
         return view('siteEvent.create-new-app');
         #git clone run from terminal to clone the new app
-        
+
         #git clone
         #cd newapp
         #composer install
