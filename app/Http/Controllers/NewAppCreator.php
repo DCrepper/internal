@@ -21,7 +21,7 @@ class NewAppCreator extends Controller
         $script = base_path("create_laravel_app.sh");
         //$script = "/path/to/your/create_laravel_app.sh $newAppRoot $appName"; // Change this to the path of your shell script
 
-        $process = new Process([$script]);
+        $process = new Process([$script=>$appName]);
         $process->run();
 
         $output = $process->getOutput().  $process->getErrorOutput();
