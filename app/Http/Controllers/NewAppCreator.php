@@ -23,10 +23,7 @@ class NewAppCreator extends Controller
         $process->run();
 
         $output = $process->getOutput().  $process->getErrorOutput();
-        $out = shell_exec("chmod -R 777 $appName");
-        if($out){
-            dump($out);
-        }
+
         dump($output);
         return view('siteEvent.create-new-app');
         #git clone run from terminal to clone the new app
