@@ -12,26 +12,20 @@ class NewAppCreator extends Controller
      */
     public function create()
     {
-         $newAppRoot = '/'; // Change this to the desired root folder
 
         // Name of the new Laravel application
         $appName = 'newapp'; // Change this to the desired app name
 
         // Shell script to create a new Laravel app
         $script = base_path("create_laravel_app.sh");
-        //$script = "/path/to/your/create_laravel_app.sh $newAppRoot $appName"; // Change this to the path of your shell script
 
         $process = new Process([ $script,$appName]);
         $process->run();
 
         $output = $process->getOutput().  $process->getErrorOutput();
-        //$output = shell_exec($script);
-
-        // Check if the new app creation was successful
-        if ($output === null) {
-            //return "New Laravel app created successfully at $newAppRoot/$appName";
-        } else {
-            //return "Failed to create new Laravel app.";
+        $out = shell_exec("chmod -R 777 $appName");
+        if($out){
+            dump($out);
         }
         dump($output);
         return view('siteEvent.create-new-app');
